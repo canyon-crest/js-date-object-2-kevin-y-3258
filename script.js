@@ -23,7 +23,7 @@ let daynum = now.getDay()
 // STEP 3: Create an array of day names:
 //         let days = ["Sunday", "Monday", "Tuesday", "Wednesday",
 //                     "Thursday", "Friday", "Saturday"];
-let days = ['Sunday,', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+let days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 // STEP 4: Use the day number as an index to get the day name
 //         from the array.
 
@@ -39,7 +39,7 @@ document.getElementById('warmUpDate').innerHTML = days[daynum];
 // Example: "4/2/2025" (no leading zeros)
 
 // STEP 6: Create a new Date object (or reuse the one from above).
-
+let datenum = now.getDate();
 // STEP 7: Get the month using .getMonth()
 //         IMPORTANT: .getMonth() returns 0–11 (January = 0)
 //         so you must add 1 to get the correct month number.
@@ -50,7 +50,7 @@ let monthnum = now.getMonth() + 1;
 let yearnum = now.getFullYear();
 // STEP 10: Build the date string: month + "/" + day + "/" + year
 //          Display it in the element with ID "myDate"
-document.getElementById('myDate').innerHTML = monthnum + '/' + daynum + '/' + yearnum
+document.getElementById('myDate').innerHTML = monthnum + '/' + datenum + '/' + yearnum
 
 // ============================================
 //  PART 2: Elapsed Timer
@@ -61,7 +61,12 @@ document.getElementById('myDate').innerHTML = monthnum + '/' + daynum + '/' + ye
 
 // STEP 11: Record the start time using new Date().getTime()
 //          This gives you the current time in milliseconds.
-
+let startTime = new Date().getTime();
+let timerId = setInterval(function() {
+    let currentTime = new Date().getTime();
+    let seconds = (currentTime - startTime)/1000
+    document.getElementById('myTimer') = seconds.toFixed(3);
+}, 10)
 // STEP 12: Create a variable to hold the timer ID (for stopping later).
 //          Use setInterval() with a delay of 10 milliseconds.
 //          Inside the interval function:
